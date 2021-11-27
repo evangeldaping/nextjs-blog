@@ -5,7 +5,17 @@
   "main": "index.js",
   "scripts": {
     "dev": "next dev",
+    "lint": "eslint --ext .ts,.tsx --fix",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "./src/**/*.+(ts|tsx)": [ "eslint --fix", "git add"],
+    "./src/**/*.+(css|scss|js)": "prettier --write"
   },
   "keywords": [],
   "author": "",
@@ -18,6 +28,14 @@
   "devDependencies": {
     "@types/node": "^16.11.10",
     "@types/react": "^17.0.37",
+    "@typescript-eslint/eslint-plugin": "^5.4.0",
+    "@typescript-eslint/parser": "^5.4.0",
+    "eslint": "^8.3.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.1.2",
+    "prettier": "^2.5.0",
     "typescript": "^4.5.2"
   }
 }
